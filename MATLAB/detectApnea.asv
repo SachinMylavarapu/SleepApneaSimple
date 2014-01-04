@@ -1,0 +1,16 @@
+function apnea = detectApnea(Y, TMAX, threshold, interval)
+% Detects periods when the signal Y is below THRESHOLD for a time at least
+% INTERVAL. THRESHOLD is the percentage of the maximum signal [0, 1].
+    
+    n = length(Y);
+    sampleInterval = round(n / TMAX * interval);
+    
+    for i = 1:(n - sampleInterval + 1)
+        allb
+        for j = i:(i + sampleInterval - 1)
+            
+        end
+    end
+    apnea = zeros(1, n);
+    apnea((n / 2):end) = 1;
+end

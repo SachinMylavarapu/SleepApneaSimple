@@ -1,10 +1,35 @@
-FILENAME = 'signal.wav';
-Y = wavread(FILENAME);
+% Reading data
+clear all;
 
-scale = 10;
-for i = 1:(length(Y) / scale)
-    for j = 
-    YSampled(i) = 0.5 * (Y(i * scale, 1) + Y(i * scale, 2));
+FILENAME = 'signal.wav';
+TMAX = 6 * 60 + 26;
+YRaw = wavread(FILENAME);
+
+% Sampling data because we don't need very high resolution
+scale = 20;
+for i = 1:(length(YRaw) / scale)
+    Y(i) = 0.5 * (YRaw(i * scale, 1) + YRaw(i * scale, 2));
 end
 
-plot(YSampled);
+% Plots sampled data
+figure;
+plot(Y);
+title('Sleep signal');
+
+% Calculates and plots frequency
+YFrequency = fft(Y);
+figure;
+plot(abs(YFrequency));
+title('Frequency');
+
+% Calculates and plots the power
+power = Y.^2;
+figure;
+plot(power);
+title('Power');
+
+% Apnea detection
+apnea = detectApnea(Y);
+t = 1:TMAX;
+figure;
+plot(t, Y, t, apnea);
