@@ -1,0 +1,10 @@
+FILENAME = 'signal.wav';
+Y = wavread(FILENAME);
+
+scale = 10;
+for i = 1:(length(Y) / scale)
+    for j = 
+    YSampled(i) = 0.5 * (Y(i * scale, 1) + Y(i * scale, 2));
+end
+
+plot(YSampled);
