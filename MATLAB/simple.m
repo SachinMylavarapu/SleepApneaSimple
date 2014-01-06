@@ -32,12 +32,15 @@ title('Power');
 % Apnea detection
 threshold = 0.005;
 interval = 3;
+sensitivity = 0.1;
 apnea = detectApnea(power, TMAX, threshold, interval);
+apneaVar = detectApneaVar(power , TMAX , sensitivity);
+apneaFinal = apnea | apneaVar;
 t = 0:(TMAX / N):(TMAX - TMAX / N);
 figure;
 subplot(2, 1, 1);
 plot(t, Y);
 title('Sleep signal');
 subplot(2, 1, 2);
-plot(t, apnea);
+plot(t, apneaFinal);
 title('Apnea detection');

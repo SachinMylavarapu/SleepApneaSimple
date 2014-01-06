@@ -8,7 +8,6 @@ function apnea = detectApneaVar (Y , TMAX , sensitivity)
 
 n = length (Y);
 apnea = zeros (1 , n);
-t = [0 : TMAX/(n - 1) : TMAX]; % This gives the time values of the data points
 
 % Calculate variance of whole signal (as a yardstick)
 
