@@ -32,7 +32,7 @@ title('Power');
 % Apnea detection
 threshold = 0.005;
 interval = 3;
-sensitivity = 0.1;
+sensitivity = 5e-3;
 apnea = detectApnea(power, TMAX, threshold, interval);
 apneaVar = detectApneaVar(power , TMAX , sensitivity);
 apneaFinal = apnea | apneaVar;

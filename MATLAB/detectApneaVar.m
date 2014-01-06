@@ -28,10 +28,10 @@ for i = 1:n-10
     sigma2 = sum( (twindow(2,:) - mu).^2 ) / 9 ;
     
     if sigma2 > maxVariance 
-        apnea(1 , twindow(2,:)) = 1;
+        apnea(1 , twindow(1,:) ) = 1;
     end
     
     twindow(1,:) = twindow(1,:) + 1; % Update the window for the next round of variance calculations
-    twindow(2,:) = Y ( twindow(1,:) )
+    twindow(2,:) = Y ( twindow(1,:) );
 
 end
